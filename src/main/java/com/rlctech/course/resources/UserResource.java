@@ -9,6 +9,7 @@ import com.rlctech.course.entities.User;
 
 // RECURSOS PARA USER
 
+
 // anotacao
 @RestController
 @RequestMapping(value = "/users")
