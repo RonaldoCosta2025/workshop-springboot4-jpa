@@ -9,30 +9,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rlctech.course.entities.Order;
 import com.rlctech.course.entities.User;
-import com.rlctech.course.services.OrderService;
+import com.rlctech.course.services.UserService;
 
 // RECURSOS PARA USER
 
 // anotacao
 @RestController
-@RequestMapping(value = "/order")
-public class UserResource {
+@RequestMapping(value = "/users")
+public class OrderResource {
 
 	// criando a dependencia
 	@Autowired
-	private OrderService service;
+	private UserService service;
 
 	// endpoint para acessar os usuarios
 	// metodo que responde a requisicao do tipo get do htpp
 	@GetMapping
-	public ResponseEntity<List<Order>> findAll() {
+	public ResponseEntity<List<User>> findAll() {
 		// instancia o user
 		// User u = new User(1L, "Maria", "maria@gmail.com", "9999999", "12345");
 
 		// busca a lista
-		List<Order> list = service.findAll();
+		List<User> list = service.findAll();
 
 		// retorna a resposta
 		return ResponseEntity.ok().body(list);
@@ -40,8 +39,8 @@ public class UserResource {
 	
 	//busca por id
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Order> findiById(@PathVariable Long id){
-		Order obj = service.findById(id);
+	public ResponseEntity<User> findiById(@PathVariable Long id){
+		User obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 }
